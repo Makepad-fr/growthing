@@ -1,0 +1,42 @@
+{
+  "name": "@makepad/linkedinjs",
+  "version": "1.0.0",
+  "description": "LinkedIn web scraper written in TypeScript",
+  "main": "out/index.js",
+  "types": "out/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "../../node_modules/.bin/eslint -c .eslintrc.json --fix ./src/*.ts && ./node_modules/.bin/tsc -p tsconfig.json"
+    },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Makepad-fr/linkedin.js.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "web",
+    "scraping",
+    "scraping",
+    "linkedin",
+    "linkedin",
+    "web",
+    "scraping",
+    "linkedin",
+    "scraper"
+  ],
+  "author": "Makepad Developers <dev@makepad.fr>",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Makepad-fr/linkedin.js/issues"
+  },
+  "homepage": "https://github.com/Makepad-fr/linkedin.js#readme",
+  "devDependencies": {
+    "@makepad/tsconfig": "workspace:*",
+    "@makepad/eslint-config": "workspace:*",
+    "eslint": "7.32.0",
+    "typescript": "^4.5.3"
+  },
+  "dependencies": {
+    "playwright-core": "^1.29.2"
+  }
+}
