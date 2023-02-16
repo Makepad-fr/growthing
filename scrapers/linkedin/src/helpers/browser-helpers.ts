@@ -1,9 +1,8 @@
 import { Browser, BrowserContext, ElementHandle, Page } from 'playwright-core';
-import {Logger} from "../utils/logger";
+import {logger} from "../utils/logger";
 
 export default class BrowserHelpers {
   private page: Page;
-  static readonly LOGGER = new Logger('BrowserHelpers');
   constructor(page: Page) {
     this.page = page;
   }
@@ -223,11 +222,11 @@ export default class BrowserHelpers {
   public async scrollUntilTheEndOfPage(): Promise<void> {
     do {
       let scrollFactor = getScrollFactor();
-      BrowserHelpers.LOGGER.log(`Scroll factor: ${scrollFactor}`);
+      logger.debug(`Scroll factor: ${scrollFactor}`);
       await this.scroll(await this.getScrollableHeight() * scrollFactor);
-      BrowserHelpers.LOGGER.log('Scrolled');
+      logger.debug('Scrolled');
       const duration = Math.ceil(Math.random() * 5000 + 1000);
-      BrowserHelpers.LOGGER.log(`Will sleep for ${duration}`);
+      logger.debug(`Will sleep for ${duration}`);
       await this.page.waitForTimeout(duration);
     } while (((await this.getScrollableHeight()) - (await this.#getScrollY())) > 0);
     await this.page.screenshot({path: 'scrollFinished.png'});

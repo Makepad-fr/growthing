@@ -1,13 +1,12 @@
 import { Page } from 'playwright-core';
 import AbstractSubModule from './abstract-sub-module';
-import { Logger } from '../utils/logger';
 import UserProfileSelectors from '../selectors/user-profile-selectors';
 import URLFactory from '../utils/url-factory';
+import {logger} from "../utils/logger";
 
 export default abstract class AbstractUserProfileModule extends AbstractSubModule {
   private readonly id: string;
   protected readonly urlFactory: URLFactory;
-  private static logger: Logger = new Logger('AbstractUserProfileModule');
   private readonly selectors: UserProfileSelectors;
   protected constructor(selectors: UserProfileSelectors, baseURL: string, id: string, page: Page) {
     super(page, baseURL);
@@ -22,7 +21,7 @@ export default abstract class AbstractUserProfileModule extends AbstractSubModul
       return;
     }
     await this.page.goto(u);
-    AbstractUserProfileModule.logger.log('Navigated to the user profile page');
+    logger.debug('Navigated to the user profile page');
   }
 
   /**

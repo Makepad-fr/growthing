@@ -1,10 +1,10 @@
 import AbstractSubModule from './abstract-sub-module';
 import URLFactory from '../utils/url-factory';
-import { Logger } from '../utils/logger';
 import { Page } from 'playwright-core';
 import GroupSelectors from '../selectors/group-selectors';
 import UserProfile from '../models/user-profile';
 import Post from "../models/post";
+import {logger} from "../utils/logger";
 
 interface AbstractGroupModuleOptions {
   selectors: GroupSelectors;
@@ -15,7 +15,6 @@ interface AbstractGroupModuleOptions {
 export default abstract class AbstractGroupModule extends AbstractSubModule {
   readonly id: string;
   protected readonly urlFactory: URLFactory;
-  private static logger: Logger = new Logger('AbstractGroupModule');
   protected readonly selectors: GroupSelectors;
 
   protected constructor({ selectors, baseURL, id, page }: AbstractGroupModuleOptions) {
@@ -26,16 +25,15 @@ export default abstract class AbstractGroupModule extends AbstractSubModule {
   }
 
   public async init() {
-    console.log('HELLO WORLD FROM INIT FUNCTION');
-    AbstractGroupModule.logger.log('Init function called');
+    logger.debug('Init function called');
     const u: string = this.urlFactory.get(this.id);
-    AbstractGroupModule.logger.log(`URL: ${u}`);
+    logger.debug(`URL: ${u}`);
     if (this.page.url() === u) {
       return;
     }
-    AbstractGroupModule.logger.log('Navigating to url');
+    logger.debug('Navigating to url');
     await this.page.goto(u);
-    AbstractGroupModule.logger.log('Navigated to the group page');
+    logger.debug('Navigated to the group page');
   }
 
   /**

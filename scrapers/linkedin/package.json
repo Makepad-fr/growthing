@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "../../node_modules/.bin/eslint -c .eslintrc.json --fix ./src/*.ts && ./node_modules/.bin/tsc -p tsconfig.json"
-    },
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Makepad-fr/linkedin.js.git"
@@ -31,12 +31,13 @@
   },
   "homepage": "https://github.com/Makepad-fr/linkedin.js#readme",
   "devDependencies": {
-    "@makepad/tsconfig": "workspace:*",
     "@makepad/eslint-config": "workspace:*",
+    "@makepad/tsconfig": "workspace:*",
     "eslint": "7.32.0",
     "typescript": "^4.5.3"
   },
   "dependencies": {
-    "playwright-core": "^1.29.2"
+    "playwright-core": "^1.29.2",
+    "winston": "^3.8.2"
   }
 }
