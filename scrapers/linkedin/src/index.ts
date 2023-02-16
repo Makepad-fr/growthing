@@ -4,6 +4,7 @@ import {isFileExists} from "./utils/file-utils";
 import selectors from "./selectors";
 import {saveBrowserContext} from "./helpers/browser-helpers";
 import UserProfileModule from "./modules/user-profile-module";
+import JobListingModule from "./modules/job-listing-module";
 
 export default class LinkedInJS extends AbstractModule implements RequireAuthentication {
     protected static override readonly BASE_URL = 'https://linkedin.com';
@@ -67,6 +68,16 @@ export default class LinkedInJS extends AbstractModule implements RequireAuthent
         );
         await u.init();
         return u;
+    }
+
+    /**
+     * Get the job listing with the given parameters
+     */
+    // TODO: Add job listing parameters
+    public async jobListing() {
+        const jobListingModule: JobListingModule = new JobListingModule(this.page);
+        await jobListingModule.init();
+        return jobListingModule;
     }
 
     private constructor({

@@ -25,6 +25,10 @@ async function main() {
         }
         console.error('Environment variables LINKEDIN_USERNAME and LINKEDIN_PASSWORD are required');
     }
+    // TODO: Add an example for user profile
+    // TODO: Add an example for company page
+    const linkedinJobsModule = await scraper.jobListing();
+    await linkedinJobsModule.getJobIds();
 }
 
 main().then();
