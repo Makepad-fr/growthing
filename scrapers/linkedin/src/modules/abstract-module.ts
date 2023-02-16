@@ -42,6 +42,8 @@ export default abstract class AbstractModule {
 
   protected static readonly BASE_URL: string;
 
+  public readonly loadedFromExistingAuthenticationContext: boolean;
+
   protected static async initOptions({
     browser = 'firefox',
     launchOptions = {},
@@ -85,12 +87,13 @@ export default abstract class AbstractModule {
     };
   }
 
-  constructor({ browser, context, page, authenticatedContextPath, disableAssets }: ModuleOptions) {
+  constructor({ browser, context, page, authenticatedContextPath, disableAssets, loadedFromExistingBrowserContext }: ModuleOptions) {
     this.browser = browser;
     this.context = context;
     this.page = page;
     this.authenticatedContextPath = authenticatedContextPath;
     this.disableAssets = disableAssets;
+    this.loadedFromExistingAuthenticationContext = loadedFromExistingBrowserContext;
   }
 
   /**

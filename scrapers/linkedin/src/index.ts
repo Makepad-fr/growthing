@@ -31,7 +31,6 @@ export default class LinkedInJS extends AbstractModule implements RequireAuthent
             authenticatedContextPath,
             disableAssets,
         });
-        console.log('Creating linkedin js instance');
         return new LinkedInJS(options);
     }
 
@@ -72,7 +71,7 @@ export default class LinkedInJS extends AbstractModule implements RequireAuthent
     }
 
     private constructor({
-                            browser, context, page, authenticatedContextPath, disableAssets,
+                            browser, context, page, authenticatedContextPath, disableAssets, loadedFromExistingBrowserContext
                         }: ModuleOptions) {
         super({
             browser,
@@ -80,7 +79,7 @@ export default class LinkedInJS extends AbstractModule implements RequireAuthent
             page,
             authenticatedContextPath,
             disableAssets,
-            loadedFromExistingBrowserContext: false
+            loadedFromExistingBrowserContext
         });
     }
 }
