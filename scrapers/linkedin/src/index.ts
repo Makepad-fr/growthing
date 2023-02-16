@@ -45,7 +45,6 @@ export default class LinkedInJS extends AbstractModule implements RequireAuthent
             // If the authenticated context already exists, do nothing
             return;
         }
-        console.log('Login function called');
         //await this.page.waitForSelector(selectors.login.username);
         await this.page.fill(selectors.login.username, username);
         await this.page.fill(selectors.login.password, password);
