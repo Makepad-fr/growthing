@@ -17,9 +17,9 @@ async function main() {
         });
 
         await scraper.login(LINKEDIN_USERNAME, LINKEDIN_PASSWORD)
-    } {
-        console.error('Environment variables LINKEDIN_USERNAME and LINKEDIN_PASSWORD are required');
+        return;
     }
+    console.error('Environment variables LINKEDIN_USERNAME and LINKEDIN_PASSWORD are required');
 }
 
 main().then();
